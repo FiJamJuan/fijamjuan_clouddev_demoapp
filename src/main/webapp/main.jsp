@@ -7,7 +7,7 @@
 <title>Demo App</title>
 </head>
 <body>
-Hello, How are you?
+Hello, How are you? This is Feature XYZ
 <%=new java.util.Date()%>
 </body>
 </html>
