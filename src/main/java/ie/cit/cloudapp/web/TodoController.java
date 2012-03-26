@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author fiona
  * 
  */
-//my notes when you select the page todolist.html this is the controller that the dispatcher sends it to?
+//my notes: when you select the page todolist.html this is the controller that the dispatcher sends it to and maps it to the output jsp - todolist.jsp ?
 @RequestMapping("todolist")
 @Controller
 public class TodoController {
