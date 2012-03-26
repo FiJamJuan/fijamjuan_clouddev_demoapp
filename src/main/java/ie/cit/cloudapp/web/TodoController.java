@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author fiona
  * 
  */
-
-@RequestMapping("todos")
+//my notes when you select the page todolist.html this is the controller that the dispatcher sends it to?
+@RequestMapping("todolist")
 @Controller
 public class TodoController {
 	
@@ -28,33 +28,29 @@ public class TodoController {
 	private ToDoRepository repo;
 
 	@RequestMapping (method = RequestMethod.GET)
-	public String listTodos(Model model) {
+	public void listTodos(Model model) {
 		model.addAttribute("todos", repo.getTodos());
-		return "output_list.jsp";
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public String createTodo(Model model, @RequestParam String text) {
+	public void createTodo(Model model, @RequestParam String Text) {
 		Todo todo = new Todo();
-		todo.setText(text);
+		todo.setText(Text);
 		repo.addTodo(todo);
 		model.addAttribute("todos", repo.getTodos());
-		return "output_list.jsp";
 	}
 
 	@RequestMapping(method = RequestMethod.DELETE)
-	public String deleteTodo(Model model, @RequestParam int todoId) {
+	public void deleteTodo(Model model, @RequestParam int todoId) {
 		repo.getTodos().remove(todoId - 1);
 		model.addAttribute("todos", repo.getTodos());
-		return "output_list.jsp";
 	}
 
 	@RequestMapping(method = RequestMethod.PUT)
-	public String updateTodo(Model model, @RequestParam int todoId) {
+	public void updateTodo(Model model, @RequestParam int todoId) {
 		Todo todo = repo.getTodos().get(todoId - 1);
 		todo.setDone(!todo.isDone());
 		model.addAttribute("todos", repo.getTodos());
-		return "output_list.jsp";
 	}
 
 }
