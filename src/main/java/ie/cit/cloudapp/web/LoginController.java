@@ -55,6 +55,9 @@ public class LoginController {
 		Login login = new Login();
 		login.setUsername(newusername);
 		login.setPassword(newpassword);
+		login.setEmail(email);
+		login.setFname(fname);
+		login.setLname(lname);
 		loginrepo.addLogin(login);
 		model.addAttribute("logins", loginrepo.getLogin());
 		// model.addAttribute("logins", loginrepo.getCurrentLogin(username));
