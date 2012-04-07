@@ -1,0 +1,57 @@
+div.Header{
+margin-top: 20px;
+margin-bottom: 20px;
+max-width: 1000px;
+min-width: 1000px;
+}
+div.Body{
+max-width: 1000px;
+min-width: 1000px;
+margin-top: 0px;
+margin-right: 50px;
+margin-bottom: 20px;
+margin-left: 50px;
+}
+h1{
+color: #0000CC;
+text-style: bold;
+font-family: 'Comic Sans MS', cursive;
+text-align: center;
+font-size: XX-large;
+}
+h2{
+color: #0000CC;
+font-family: 'Comic Sans MS', cursive;
+text-align: center;
+font-size: Large;
+}
+div.login{
+font-family: 'Comic Sans MS', cursive;
+color: black;
+font-size: Medium;
+}
+div.LeftPage{
+position: absolute;
+min-width: 450px;
+max-width: 450px;
+text-align: center;
+}
+div.RightPage{
+position: absolute;
+left: 550px;
+min-width: 450px;
+max-width: 450px;
+text-align: center;
+}
+div.Border{
+position: absolute;
+border-style: solid;
+border-width: 2px;
+border-color: black;
+min-width: 450px;
+max-width: 450px;
+min-height: 250px;
+max-height: 250px;
+
+}
+
