@@ -13,6 +13,8 @@ public class Login {
 	private String fname;
 	private String lname;
 	private String email;
+	private Integer id;
+	
 	
 	/**
 	 * @return the username
@@ -73,6 +75,18 @@ public class Login {
 	 */
 	public void setFname(String fname) {
 		this.fname = fname;
+	}
+	/**
+	 * @return the id
+	 */
+	public Integer getId() {
+		return id;
+	}
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	
 	

@@ -6,6 +6,7 @@ package ie.cit.cloudapp.web;
 import ie.cit.cloudapp.Login;
 import ie.cit.cloudapp.LoginRepository;
 import ie.cit.cloudapp.ValidateLogin;
+import ie.cit.cloudapp.jdbcLoginRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,30 +24,24 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class LoginController {
 
 	@Autowired
-	private LoginRepository loginrepo;
+	private jdbcLoginRepository loginrepo;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public void listLogins(Model model) {
-		model.addAttribute("logins", loginrepo.getLogin());
+		model.addAttribute("logins", loginrepo.getAll());
 	}
 
 	@RequestMapping(method = RequestMethod.POST, params="username")
 	public String userLogin(Model model, @RequestParam String username,
 			@RequestParam String password) {
-		// first check if user exists and password is correct ValidateLogin
-		// ValidateLogin validate = new ValidateLogin();
-		// /if (validate.checkUser(username, password, loginrepo)==true)
-		// {
+		//For now this will just add the login to the repository
+		// Later this should be validated against existing username and pwd.
 		Login login = new Login();
 		login.setUsername(username);
 		login.setPassword(password);
-		loginrepo.addLogin(login);
-		model.addAttribute("logins", loginrepo.getLogin());
-		// model.addAttribute("logins", loginrepo.getCurrentLogin(username));
+		loginrepo.save(login);
+		model.addAttribute("logins", loginrepo.getAll());		
 		return "mainmenu";
-		// }
-		// successful login - next page served showing existing trips
-		// unsuccessful login page
 	}
 
 	@RequestMapping(method = RequestMethod.POST, params="fname")
@@ -58,9 +53,8 @@ public class LoginController {
 		login.setEmail(email);
 		login.setFname(fname);
 		login.setLname(lname);
-		loginrepo.addLogin(login);
-		model.addAttribute("logins", loginrepo.getLogin());
-		// model.addAttribute("logins", loginrepo.getCurrentLogin(username));
+		loginrepo.save(login);
+		model.addAttribute("logins", loginrepo.getAll());	
 		return "mainmenu";
 	}
 }
