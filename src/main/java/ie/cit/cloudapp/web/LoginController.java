@@ -3,6 +3,7 @@
  */
 package ie.cit.cloudapp.web;
 
+import ie.cit.cloudapp.Login;
 import ie.cit.cloudapp.LoginRepository;
 import ie.cit.cloudapp.ValidateLogin;
 
@@ -15,36 +16,48 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @author fiona
- *
+ * 
  */
 @RequestMapping("login")
 @Controller
 public class LoginController {
-		
+
 	@Autowired
 	private LoginRepository loginrepo;
 
-@RequestMapping (method = RequestMethod.GET)
-public void listLogins(Model model) {
-model.addAttribute("logins", loginrepo.getLogin());
-}
-	
-	@RequestMapping(method = RequestMethod.POST)
-	public void createLogin(Model model, @RequestParam String username,@RequestParam String password ) {
-		// first check if user exists and password is correct ValidateLogin
-		ValidateLogin validate = new ValidateLogin();
-	if (validate.checkUser(username, password, loginrepo)==true)
-			{
-	//	    Login login = new Login();
-	//		login.setUsername(username);
-	//		login.setPassword(password);
-	//		loginrepo.addLogin(login);
-			model.addAttribute("logins", loginrepo.getCurrentLogin(username));
-			}
-			//successful login - next page served showing existing trips
-			//unsuccessful login page
+	@RequestMapping(method = RequestMethod.GET)
+	public void listLogins(Model model) {
+		model.addAttribute("logins", loginrepo.getLogin());
 	}
-	
+
+	@RequestMapping(method = RequestMethod.POST)
+	public String userLogin(Model model, @RequestParam String username,
+			@RequestParam String password) {
+		// first check if user exists and password is correct ValidateLogin
+		// ValidateLogin validate = new ValidateLogin();
+		// /if (validate.checkUser(username, password, loginrepo)==true)
+		// {
+		Login login = new Login();
+		login.setUsername(username);
+		login.setPassword(password);
+		loginrepo.addLogin(login);
+		model.addAttribute("logins", loginrepo.getLogin());
+		// model.addAttribute("logins", loginrepo.getCurrentLogin(username));
+		return "login";
+		// }
+		// successful login - next page served showing existing trips
+		// unsuccessful login page
+	}
+
+	@RequestMapping(method = RequestMethod.POST)
+	public String registerUser(Model model, @RequestParam String newusername,
+			@RequestParam String newpassword) {
+		Login login = new Login();
+		login.setUsername(newusername);
+		login.setPassword(newpassword);
+		loginrepo.addLogin(login);
+		model.addAttribute("logins", loginrepo.getLogin());
+		// model.addAttribute("logins", loginrepo.getCurrentLogin(username));
+		return "login";
+	}
 }
-
-
