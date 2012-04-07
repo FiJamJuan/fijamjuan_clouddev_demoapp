@@ -13,19 +13,20 @@
 <!--end Header-->
 </head>
 <body>
+
 	<div class="Body">
 		<div class="LeftPage">
 			<div class="Border">
-				<form method="post" value="login">
-					<h2>Login</h2>
-					</br>
-					<div class="login">If you are an existing user please Login
-						here:</div>
-					</br>
-					<div class="login">Username:</div>
-					<input name="username">
-					<div class="login">Password:</div>
-					<input name="password"> </br> <input value="Login" type="submit">
+				<h2>Login</h2>
+				</br>
+				<div class="login">If you are an existing user please Login
+					here:</div>
+				</br>
+				<form method="post">
+				<div class="login">Username:</div>
+				<input name="username">
+				<div class="login">Password:</div>
+				<input name="password"> </br> <input value="Login" type="submit">
 				</form>
 			</div>
 			<!--end Border-->
@@ -33,13 +34,12 @@
 		<!--end LeftPage-->
 		<div class="RightPage">
 			<div class="Border">
-				<form action="post" value="register">
-					<h2>Register</h2>
-					</br>
-					<div class="login">If you are a new user please Register
-						here:</div>
-					</br>
 
+				<h2>Register</h2>
+				</br>
+				<div class="login">If you are a new user please Register here:</div>
+				</br>
+				<form method="post">
 					<div class="login">
 						<div class="login">First Name:</div>
 						<input name="fname">
@@ -60,5 +60,6 @@
 
 	</div>
 	<!--end Body-->
+
 </body>
 </html>

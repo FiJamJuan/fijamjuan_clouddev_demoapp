@@ -30,7 +30,7 @@ public class LoginController {
 		model.addAttribute("logins", loginrepo.getLogin());
 	}
 
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST, params="username")
 	public String userLogin(Model model, @RequestParam String username,
 			@RequestParam String password) {
 		// first check if user exists and password is correct ValidateLogin
@@ -43,21 +43,21 @@ public class LoginController {
 		loginrepo.addLogin(login);
 		model.addAttribute("logins", loginrepo.getLogin());
 		// model.addAttribute("logins", loginrepo.getCurrentLogin(username));
-		return "login";
+		return "mainmenu";
 		// }
 		// successful login - next page served showing existing trips
 		// unsuccessful login page
 	}
 
-	@RequestMapping(method = RequestMethod.POST)
-	public String registerUser(Model model, @RequestParam String newusername,
-			@RequestParam String newpassword) {
+	@RequestMapping(method = RequestMethod.POST, params="fname")
+	public String registerUser(Model model, @RequestParam String fname, @RequestParam String lname, @RequestParam String newusername,
+			@RequestParam String newpassword, @RequestParam String email) {
 		Login login = new Login();
 		login.setUsername(newusername);
 		login.setPassword(newpassword);
 		loginrepo.addLogin(login);
 		model.addAttribute("logins", loginrepo.getLogin());
 		// model.addAttribute("logins", loginrepo.getCurrentLogin(username));
-		return "login";
+		return "mainmenu";
 	}
 }
