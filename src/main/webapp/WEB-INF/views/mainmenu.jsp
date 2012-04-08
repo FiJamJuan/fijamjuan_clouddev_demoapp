@@ -17,10 +17,14 @@
 	<h2>Please select one option from the list below:</h2>
 	<div class="Body">
 		<div class="Border">
+		    <form method="post">
+		    <div class="MainMenu"><a href="viewall.jsp"><input type="submit" name="viewtrips" value="View Trips" /></a></div>
+		    </form>
+			  <form method="post">
+		    <div class="MainMenu"><a href="addtrip.html"><input type="submit" name="addtrips" value="Add Trip" /></a></div>
+		    </form>
 			<form method="post">
-				<div class="MainMenu"><input name="viewall" type="submit" value="View All"></a></div>
-				<div class="MainMenu"><input name="addtrip" type="submit" value="Add Trip"></a></div>
-				<div class="MainMenu"><input type="submit" value="Calculate Days"></div>
+				<div class="MainMenu"><input type="submit" name="calculatedays" value="Calculate Days" ></div>
 			</form>
 		</div> <!--end Border-->
 		</div> <!--end Body-->
@@ -28,12 +32,6 @@
 </html>
 
 
-
-
-
-
-</body>
-</html>
 
 
 

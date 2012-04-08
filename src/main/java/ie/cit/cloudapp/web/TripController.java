@@ -14,7 +14,7 @@ import ie.cit.cloudapp.jdbcTripRepository;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
-	@RequestMapping("mainmenu")
+	@RequestMapping("addtrip")
 	@Controller
 	public class TripController {
 		/**
@@ -25,25 +25,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 		 * @author fiona
 		 * 
 		 */
-
-
-
 			@Autowired
 			private jdbcTripRepository triprepo;
-		    @RequestMapping(method = RequestMethod.GET)
-					public void getTrip(Model model) {
-					//	model.addAttribute("trips", triprepo.getAll());
+		   
+			@RequestMapping(method = RequestMethod.GET)
+			public void getTrip(Model model) {
+				//	model.addAttribute("trips", triprepo.getAll());
 					}
 			
 			
-		    @RequestMapping(method = RequestMethod.GET,params="viewall")
-			public void listAll(Model model) {
-				model.addAttribute("trips", triprepo.getAll());
-			}
+	
 
 
-			@RequestMapping(method = RequestMethod.POST, params="addtrip")
-			public String addTrip(Model model, @RequestParam String username, @RequestParam Date deptdate, @RequestParam String departure, @RequestParam String destination,
+			@RequestMapping(params="addtrip", method = RequestMethod.POST)
+ 			//public String addTrip(Model model) {
+				public String addTrip(Model model, @RequestParam String username, @RequestParam Date deptdate, @RequestParam String departure, @RequestParam String destination,
 					@RequestParam String route, @RequestParam String userid) {
 				Trip trip = new Trip();
 			    trip.setDeptdate(deptdate); //this is a date field
@@ -54,7 +50,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 				trip.setUsername(username);
 				triprepo.save(trip);
 				model.addAttribute("trips", triprepo.getAll());	
-				return "viewall";
+				return "addtrip";
 			}
 
 	}
