@@ -30,6 +30,11 @@ font-family: 'Comic Sans MS', cursive;
 color: black;
 font-size: Medium;
 }
+div.trip{
+font-family: 'Comic Sans MS', cursive;
+color: black;
+font-size: Medium;
+}
 div.LeftPage{
 position: absolute;
 min-width: 450px;
@@ -54,4 +59,14 @@ min-height: 400px;
 max-height:  400px;
 
 }
+div.username {
+position: absolute;
+right: 100px;
+}
 
+div.MainMenu {
+position: absolute;
+left: 100px;
+top: 100px;
+text-align: center;
+}

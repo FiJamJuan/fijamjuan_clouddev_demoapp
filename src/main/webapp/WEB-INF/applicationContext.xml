@@ -11,6 +11,10 @@
 	<constructor-arg ref="dataSource" />
 	</bean>
 	
+	<bean id="triprepo" class="ie.cit.cloudapp.jdbcTripRepository">
+	<constructor-arg ref="dataSource" />
+	</bean>
+	
 	<jdbc:embedded-database type="H2" id="dataSource" />
 	
 	<jdbc:initialize-database data-source="dataSource">

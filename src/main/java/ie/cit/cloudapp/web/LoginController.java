@@ -4,8 +4,6 @@
 package ie.cit.cloudapp.web;
 
 import ie.cit.cloudapp.Login;
-import ie.cit.cloudapp.LoginRepository;
-import ie.cit.cloudapp.ValidateLogin;
 import ie.cit.cloudapp.jdbcLoginRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +26,7 @@ public class LoginController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public void listLogins(Model model) {
-		model.addAttribute("logins", loginrepo.getAll());
+		//model.addAttribute("logins", loginrepo.getAll());
 	}
 
 	@RequestMapping(method = RequestMethod.POST, params="username")
