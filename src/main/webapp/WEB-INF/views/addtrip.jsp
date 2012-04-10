@@ -10,17 +10,15 @@
 <title>Travel Tracker</title>
 </head>
 <body>
-
-	<div class="Body">
-	
+	<c:forEach items="${usr}" var="currentusr" varStatus="row">
 			<div class="Border">
-
-				<h2>Register</h2>
+				<h2>Add Trip</h2>
 				</br>
-				<div class="trip">If you are a new user please Register here:</div>
+				<div class="trip">Please add trip details here:</div>
 				</br>
 				<form method="post">
 					<div class="trip">
+						Please add a new trip for ${currentusr}
 						<div class="trip">Departure Date:</div>
 						<input name="deptdate">
 						<div class="trip">Departure Country:</div>
@@ -37,8 +35,7 @@
 
 	</div>
 	<!--end Body-->
+</c:forEach>
 
-</body>
-</html>
 </body>
 </html>

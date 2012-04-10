@@ -4,6 +4,7 @@
 package ie.cit.cloudapp.web;
 
 import ie.cit.cloudapp.Login;
+import ie.cit.cloudapp.currentUser;
 import ie.cit.cloudapp.jdbcLoginRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +26,8 @@ public class LoginController {
 	private jdbcLoginRepository loginrepo;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public void listLogins(Model model) {
-		//model.addAttribute("logins", loginrepo.getAll());
+	public void currentUsr(Model model) {
+		 //no data
 	}
 
 	@RequestMapping(method = RequestMethod.POST, params="username")
@@ -38,7 +39,10 @@ public class LoginController {
 		login.setUsername(username);
 		login.setPassword(password);
 		loginrepo.save(login);
-		model.addAttribute("logins", loginrepo.getAll());		
+		currentUser currentusr = new currentUser();
+		currentusr.setUsername(username);
+		model.addAttribute("currentusr", currentusr.getUsername());
+		model.addAttribute("logins", loginrepo.getAll());
 		return "mainmenu";
 	}
 
@@ -52,6 +56,9 @@ public class LoginController {
 		login.setFname(fname);
 		login.setLname(lname);
 		loginrepo.save(login);
+		currentUser currentusr = new currentUser();
+		currentusr.setUsername(newusername);
+		model.addAttribute("currentusr", currentusr.getUsername());
 		model.addAttribute("logins", loginrepo.getAll());	
 		return "mainmenu";
 	}

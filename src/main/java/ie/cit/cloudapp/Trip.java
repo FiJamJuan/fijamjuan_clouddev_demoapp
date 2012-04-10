@@ -16,7 +16,6 @@ public class Trip {
 		private String destination;
 		private String route;
 		private Integer id;
-		private Integer userid;
 		private String username;
 		/**
 		 * @return the deptdate
@@ -77,19 +76,9 @@ public class Trip {
 		 */
 		public void setId(Integer id) {
 			this.id = id;
+
 		}
-		/**
-		 * @return the userid
-		 */
-		public Integer getUserid() {
-			return userid;
-		}
-		/**
-		 * @param userid the userid to set
-		 */
-		public void setUserid(Integer userid) {
-			this.userid = userid;
-		}
+	
 		/**
 		 * @return the username
 		 */

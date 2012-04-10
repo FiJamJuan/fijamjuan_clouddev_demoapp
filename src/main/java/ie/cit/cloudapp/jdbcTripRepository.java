@@ -7,7 +7,7 @@ package ie.cit.cloudapp;
 	import javax.sql.DataSource;
 
 	import org.springframework.jdbc.core.JdbcTemplate;
-	import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.RowMapper;
 
 	public class jdbcTripRepository {
 		
@@ -18,13 +18,14 @@ package ie.cit.cloudapp;
 		}
 		
 		public void save(Trip trip){
-			jdbcTemplate.update("insert into TRIPS(deptdate, departure, destination, route, username, userid);) values (?,?,?, ?, ?, ?)",trip.getDeptdate(),trip.getDeparture(), trip.getDestination(), trip.getRoute(), trip.getUsername(), trip.getUserid());
+			jdbcTemplate.update("insert into TRIPS(deptdate, departure, destination, route, username) values (?,?,?, ?, ?)",trip.getDeptdate(),trip.getDeparture(), trip.getDestination(), trip.getRoute(), trip.getUsername());
 
 		}
 		
 		public List<Trip> getAll(){
-			return jdbcTemplate.query("select id,deptdate, departure, destination, route, username, userid from TRIPS", new TripMapper());
+			return jdbcTemplate.query("select id,deptdate, departure, destination, route, username from TRIPS", new TripMapper());
 		}
+		
 		
 	
 		
@@ -37,7 +38,7 @@ package ie.cit.cloudapp;
 			trip.setDeparture(rs.getString("departure"));
 				trip.setDestination(rs.getString("destination"));
 				trip.setRoute(rs.getString("route"));
-				trip.setUserid(rs.getInt("userid"));
+				//trip.setUserid(rs.getInt("userid"));
 				trip.setId(rs.getInt("id"));
 				trip.setUsername(rs.getString("username"));
 				return trip;
