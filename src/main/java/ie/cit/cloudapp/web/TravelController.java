@@ -5,7 +5,6 @@ package ie.cit.cloudapp.web;
 
 import java.util.Date;
 
-import ie.cit.cloudapp.CurrentUser;
 import ie.cit.cloudapp.Trip;
 import ie.cit.cloudapp.UserInfo;
 import ie.cit.cloudapp.jdbcTripRepository;

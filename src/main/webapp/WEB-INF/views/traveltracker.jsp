@@ -37,7 +37,7 @@
 						<input value="Login" type="submit">
 					</form>
 				
-					
+					<c:forEach items="${user}" var="user" varStatus="row">
 		         		Hello ${user.username} !
 		     
 							
@@ -62,10 +62,13 @@
 									${trips} 
 							
 														
-
+</c:forEach>
 			</div>
 			<!--end Border-->
 	</div>
 	<!--end Body-->
 </body>
 </html>
+
+
+
