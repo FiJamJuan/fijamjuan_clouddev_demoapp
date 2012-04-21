@@ -20,7 +20,7 @@ import org.springframework.jdbc.core.RowMapper;
 		public void save(Trip trip){
 			jdbcTemplate.update("insert into TRIPS(deptdate, arrdate, departure, destination, route, username) values (?,?,?,?,?,?)",trip.getDeptdate(),trip.getArrdate(),trip.getDeparture(), trip.getDestination(), trip.getRoute(), trip.getUsername());
 		}
-		
+ 
 		public List<Trip> getAllTrips(String username){
 			return jdbcTemplate.query("select id, deptdate, arrdate, departure, destination, route, username from TRIPS where username = ?", new Object[]{username}, new TripMapper());
 		}

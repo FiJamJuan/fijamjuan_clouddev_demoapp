@@ -58,10 +58,13 @@
 									<input value="Add Trip" type="submit">
 								</form>
 						       Trips added:
-								
-									${trips} 
-							
-														
+								DeptDate	${trips.deptdate} ,
+								Departure	${trips.departure} ,
+								Arrival	${trips.arrdate} ,
+								Destn	${trips.destination} ,
+								Rte	${trips.route} ,
+								Name	${trips.username} ,
+											
 </c:forEach>
 			</div>
 			<!--end Border-->

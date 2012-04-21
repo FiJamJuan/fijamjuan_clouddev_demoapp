@@ -27,7 +27,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class TravelController {
 	@Autowired
 	private jdbcUserRepository userrepo;
-	private jdbcTripRepository triprepo;;
+	@Autowired
+	private jdbcTripRepository triprepo;
 
 	private UserInfo userinfo = new UserInfo();
 	//private CurrentUser currentuser = new CurrentUser();
@@ -69,9 +70,9 @@ public class TravelController {
 		trip.setDestination(destination);
 		trip.setRoute(route);
 		trip.setUsername(userinfo.getUsername());
-		//triprepo.save(trip);
+		triprepo.save(trip);
 	  //  model.addAttribute("trips",	triprepo.getAllTrips(userinfo.getUsername()));
-		model.addAttribute("trips", trip.getDeptdate());
+		model.addAttribute("trips", triprepo.getAllTrips(userinfo.getUsername()));
 		model.addAttribute("user", userrepo.getUserData(userinfo.getUsername()));
 		return "traveltracker";
 	}
