@@ -57,13 +57,16 @@
 									<input name="route"> 
 									<input value="Add Trip" type="submit">
 								</form>
+							
+						       <c:forEach items="${trips}" var="trips" varStatus="row">
 						       Trips added:
 								DeptDate	${trips.deptdate} ,
 								Departure	${trips.departure} ,
 								Arrival	${trips.arrdate} ,
 								Destn	${trips.destination} ,
 								Rte	${trips.route} ,
-								Name	${trips.username} ,
+								Name	${trips.username} 
+							</c:forEach>
 											
 </c:forEach>
 			</div>
