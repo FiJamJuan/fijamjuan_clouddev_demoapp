@@ -2,6 +2,7 @@ package ie.cit.cloudapp;
 
 	import java.sql.ResultSet;
 	import java.sql.SQLException;
+import java.util.Date;
 	import java.util.List;
 
 	import javax.sql.DataSource;
@@ -24,11 +25,10 @@ import org.springframework.jdbc.core.RowMapper;
 		public List<Trip> getAllTrips(String username){
 			return jdbcTemplate.query("select id, deptdate, arrdate, departure, destination, route, username from TRIPS where username = ?", new Object[]{username}, new TripMapper());
 		}
-		
-		
-	
-		
-		
+
+		public List<Trip> getDeptDate(String destination, String username, Date deptdate){
+			return jdbcTemplate.query("select id, deptdate, arrdate, departure, destination, route, username from TRIPS where destination=? and username=? and deptdate=?", new Object[]{destination,username,deptdate}, new TripMapper());
+		}
 	}
 		class TripMapper implements RowMapper<Trip>{
 			public Trip mapRow(ResultSet rs, int rowNum) throws SQLException{

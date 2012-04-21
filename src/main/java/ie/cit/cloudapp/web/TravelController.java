@@ -32,12 +32,15 @@ public class TravelController {
 
 	private UserInfo userinfo = new UserInfo();
 	//private CurrentUser currentuser = new CurrentUser();
-   
+	final String existinguser = "Existing User";
+	public Integer count;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public void currentUsr(Model model) {	
-	//   model.addAttribute("currentusr", currentuser.getUsername());
-		model.addAttribute("user", userrepo.getUserData(userinfo.getUsername()));
+	//	model.addAttribute("user", userrepo.getUserData(userinfo.getUsername()))
+		count = 0;
+		//userinfo.setUsername("");
+		model.addAttribute("count",count);
 	}
 
 	//@RequestMapping(uri="login", method = RequestMethod.POST)
@@ -46,16 +49,22 @@ public class TravelController {
 			@RequestParam String fname, @RequestParam String lname,
 			@RequestParam String email) {
 		//currentuser.setUsername(username);
+		if (! userrepo.getUserData(username).isEmpty())
+			// just display stored trips for this user
+			model.addAttribute("existinguser",existinguser);
+		else {
+			//add the user to the database
 		userinfo.setUsername(username);
 		userinfo.setEmail(email);
 		userinfo.setFname(fname);
 		userinfo.setLname(lname);
 		userinfo.setUserAdded(true);
 		userrepo.save(userinfo);
-		model.addAttribute("user", userrepo.getUserData(username));
-	//	model.addAttribute("currenttest", userinfo.getUsername());
-	//	model.addAttribute("currentusr", currentuser.getUsername());
-	//	  model.addAttribute("userinfo", userrepo.getUserData(username));	
+		}
+		count = 1;
+		model.addAttribute("user", userrepo.getUserData(username));	
+		model.addAttribute("trips", triprepo.getAllTrips(username));
+		model.addAttribute("count",count);
 		return "traveltracker";
 	}
 
@@ -64,16 +73,25 @@ public class TravelController {
 			@RequestParam Date arrdate, @RequestParam String departure,
 			@RequestParam String destination, @RequestParam String route ) {
 		Trip trip = new Trip();
+		Boolean existingtrip = false;
 		trip.setDeptdate(deptdate); // this is a date field
 		trip.setArrdate(arrdate); // this is a date field
 		trip.setDeparture(departure);
 		trip.setDestination(destination);
 		trip.setRoute(route);
 		trip.setUsername(userinfo.getUsername());
+		if (! triprepo.getDeptDate(destination, userinfo.getUsername(),deptdate).isEmpty())
+			// just display stored trips for this user
+		{
+			existingtrip=true;
+			model.addAttribute("existingtrip",existingtrip);}
+		else {
 		triprepo.save(trip);
-	  //  model.addAttribute("trips",	triprepo.getAllTrips(userinfo.getUsername()));
+		}
+		count = 2;
 		model.addAttribute("trips", triprepo.getAllTrips(userinfo.getUsername()));
 		model.addAttribute("user", userrepo.getUserData(userinfo.getUsername()));
+		model.addAttribute("count",count);
 		return "traveltracker";
 	}
 

@@ -24,6 +24,8 @@
 					<div class="login">To start please enter some user details
 						here:</div>
 					</br>
+					${count}
+				  <c:if test="${count eq 0}">
 					<form method="post">
 						<div class="login">Username:</div>
 						<input name="username">
@@ -36,12 +38,11 @@
 						<div class="login"></div>
 						<input value="Login" type="submit">
 					</form>
+					</c:if>
 				
+				    ${existinguser}</br>
 					<c:forEach items="${user}" var="user" varStatus="row">
-		         		Hello ${user.username} !
-		     
-							
-								<div class="trip">	Please add a new trip for ${user.username}</div>
+								<div class="trip">	Hello ${user.username}!, please add a new trip:</div>
 								</br>
 								<form method="post">
 									<div class="trip">	

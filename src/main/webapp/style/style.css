@@ -35,29 +35,13 @@ font-family: 'Comic Sans MS', cursive;
 color: black;
 font-size: Medium;
 }
-div.LeftPage{
-position: absolute;
-min-width: 450px;
-max-width: 450px;
-text-align: center;
-}
-div.RightPage{
-position: absolute;
-left: 550px;
-min-width: 450px;
-max-width: 450px;
-text-align: center;
-}
 div.Border{
 position: absolute;
 border-style: solid;
 border-width: 2px;
 border-color: black;
 min-width: 450px;
-max-width: 450px;
 min-height: 400px;
-max-height:  400px;
-
 }
 div.username {
 position: absolute;
