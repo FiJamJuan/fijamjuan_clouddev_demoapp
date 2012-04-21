@@ -12,6 +12,7 @@ public class Trip {
 	 *
 	 */ 
 	    private Date deptdate;
+	    private Date arrdate;
 		private String departure;
 		private String destination;
 		private String route;
@@ -90,6 +91,18 @@ public class Trip {
 		 */
 		public void setUsername(String username) {
 			this.username = username;
+		}
+		/**
+		 * @return the arrdate
+		 */
+		public Date getArrdate() {
+			return arrdate;
+		}
+		/**
+		 * @param arrdate the arrdate to set
+		 */
+		public void setArrdate(Date arrdate) {
+			this.arrdate = arrdate;
 		}
 
 

@@ -18,12 +18,11 @@ import org.springframework.jdbc.core.RowMapper;
 		}
 		
 		public void save(Trip trip){
-			jdbcTemplate.update("insert into TRIPS(deptdate, departure, destination, route, username) values (?,?,?, ?, ?)",trip.getDeptdate(),trip.getDeparture(), trip.getDestination(), trip.getRoute(), trip.getUsername());
-
+			jdbcTemplate.update("insert into TRIPS(deptdate, arrdate, departure, destination, route, username) values (?,?,?,?,?,?)",trip.getDeptdate(),trip.getArrdate(),trip.getDeparture(), trip.getDestination(), trip.getRoute(), trip.getUsername());
 		}
 		
-		public List<Trip> getAll(){
-			return jdbcTemplate.query("select id,deptdate, departure, destination, route, username from TRIPS", new TripMapper());
+		public List<Trip> getAllTrips(String username){
+			return jdbcTemplate.query("select id, deptdate, arrdate, departure, destination, route, username from TRIPS where username = ?", new Object[]{username}, new TripMapper());
 		}
 		
 		
@@ -34,8 +33,9 @@ import org.springframework.jdbc.core.RowMapper;
 		class TripMapper implements RowMapper<Trip>{
 			public Trip mapRow(ResultSet rs, int rowNum) throws SQLException{
 				Trip trip = new Trip();
-				trip.setDeptdate(rs.getDate("deptDate"));
-			trip.setDeparture(rs.getString("departure"));
+				trip.setDeptdate(rs.getDate("deptdate"));
+		     	trip.setDeparture(rs.getString("departure"));
+			    trip.setDeptdate(rs.getDate("arrdate"));
 				trip.setDestination(rs.getString("destination"));
 				trip.setRoute(rs.getString("route"));
 				//trip.setUserid(rs.getInt("userid"));

@@ -1,4 +1,5 @@
 <%@ page import="ie.cit.cloudapp.UserInfo"%>
+<%@ page import="ie.cit.cloudapp.Trip"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -17,9 +18,8 @@
 <body>
 
 	<div class="Body">
-		<div class="LeftPage">
 			<div class="Border">
-					<h2>Login</h2>
+								<h2>Login</h2>
 					</br>
 					<div class="login">To start please enter some user details
 						here:</div>
@@ -36,11 +36,35 @@
 						<div class="login"></div>
 						<input value="Login" type="submit">
 					</form>
-			
+				
+					
+		         		Hello ${user.username} !
+		     
+							
+								<div class="trip">	Please add a new trip for ${user.username}</div>
+								</br>
+								<form method="post">
+									<div class="trip">	
+										<div class="trip">Date of Departure:</div>
+										<input name="deptdate">
+										<div class="trip">Departure Country:</div>
+										<input name="departure">
+										<div class="trip">Date of Arrival:</div>
+										<input name="arrdate">
+										<div class="trip">Destination Country:</div>
+									<input name="destination">
+									<div class="trip">Route:</div>
+									<input name="route"> 
+									<input value="Add Trip" type="submit">
+								</form>
+						       Trips added:
+								
+									${trips} 
+							
+														
+
 			</div>
 			<!--end Border-->
-		</div>
-		<!--end LeftPage-->
 	</div>
 	<!--end Body-->
 </body>
