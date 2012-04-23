@@ -5,13 +5,10 @@ package ie.cit.cloudapp;
 	 */
 	public class UserInfo {	
 		private String username;
-		private String fname;
-		private String lname;
+		private String pwd;
 		private String email;
-		private boolean userAdded;
-		private boolean addTrip;
-		private boolean viewAll;
-		private boolean calcDays;
+		private String home;
+		private Boolean addtrip;
 		private Integer id;
 		
 		/**
@@ -42,30 +39,8 @@ package ie.cit.cloudapp;
 		/**
 		 * @return the lname
 		 */
-		public String getLname() {
-			return lname;
-		}
-		/**
-		 * @param lname the lname to set
-		 */
-		public void setLname(String lname) {
-			this.lname = lname;
-		}
-		/**
-		 * @return the fname
-		 */
-		public String getFname() {
-			return fname;
-		}
-		/**
-		 * @param fname the fname to set
-		 */
-		public void setFname(String fname) {
-			this.fname = fname;
-		}
-		/**
-		 * @return the id
-		 */
+		
+		
 		public Integer getId() {
 			return id;
 		}
@@ -76,60 +51,42 @@ package ie.cit.cloudapp;
 			this.id = id;
 		}
 		/**
-		 * @return the isDone
+		 * @return the pwd
 		 */
-
-		/**
-		 * @return the addTrip
-		 */
-		public boolean isAddTrip() {
-			return addTrip;
+		public String getPwd() {
+			return pwd;
 		}
 		/**
-		 * @param addTrip the addTrip to set
+		 * @param pwd the pwd to set
 		 */
-		public void setAddTrip(boolean addTrip) {
-			this.addTrip = addTrip;
+		public void setPwd(String pwd) {
+			this.pwd = pwd;
 		}
 		/**
-		 * @return the viewAll
+		 * @return the home
 		 */
-		public boolean isViewAll() {
-			return viewAll;
+		public String getHome() {
+			return home;
 		}
 		/**
-		 * @param viewAll the viewAll to set
+		 * @param home the home to set
 		 */
-		public void setViewAll(boolean viewAll) {
-			this.viewAll = viewAll;
+		public void setHome(String home) {
+			this.home = home;
 		}
 		/**
-		 * @return the calcDays
+		 * @return the addtrip
 		 */
-		public boolean isCalcDays() {
-			return calcDays;
+		public Boolean getAddtrip() {
+			return addtrip;
 		}
 		/**
-		 * @param calcDays the calcDays to set
+		 * @param addtrip the addtrip to set
 		 */
-		public void setCalcDays(boolean calcDays) {
-			this.calcDays = calcDays;
-		}
-		/**
-		 * @return the userAdded
-		 */
-		public boolean isUserAdded() {
-			return userAdded;
-		}
-		/**
-		 * @param userAdded the userAdded to set
-		 */
-		public void setUserAdded(boolean userAdded) {
-			this.userAdded = userAdded;
+		public void setAddtrip(Boolean addtrip) {
+			this.addtrip = addtrip;
 		}
 		
-		
-
 	}
 
 

@@ -3,10 +3,13 @@
  */
 package ie.cit.cloudapp.web;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import ie.cit.cloudapp.Trip;
 import ie.cit.cloudapp.UserInfo;
+import ie.cit.cloudapp.calculateDays;
 import ie.cit.cloudapp.jdbcTripRepository;
 import ie.cit.cloudapp.jdbcUserRepository;
 
@@ -31,61 +34,82 @@ public class TravelController {
 	private jdbcTripRepository triprepo;
 
 	private UserInfo userinfo = new UserInfo();
-	//private CurrentUser currentuser = new CurrentUser();
-	final String existinguser = "Existing User";
+	public String usermessage;
 	public Integer count;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public void currentUsr(Model model) {	
-	//	model.addAttribute("user", userrepo.getUserData(userinfo.getUsername()))
 		count = 0;
-		//userinfo.setUsername("");
 		model.addAttribute("count",count);
 	}
 
 	//@RequestMapping(uri="login", method = RequestMethod.POST)
-	@RequestMapping(params = "fname", method = RequestMethod.POST)
+	@RequestMapping(params = "pwd", method = RequestMethod.POST)
 	public String userData(Model model, @RequestParam String username,
-			@RequestParam String fname, @RequestParam String lname,
+			@RequestParam String pwd, @RequestParam String home,
 			@RequestParam String email) {
-		//currentuser.setUsername(username);
-		if (! userrepo.getUserData(username).isEmpty())
-			// just display stored trips for this user
-			model.addAttribute("existinguser",existinguser);
+		//validate the data
+		
+		if ((! userrepo.getUserData(username).isEmpty()) &&( (userrepo.getUserPwd(username).containsValue(pwd))))
+		{
+			// welcome user back and display stored trips for this user
+		    // check that password matches
+			usermessage = "Welcome back " + username + " please add a new trip:";
+			userrepo.updateAddtrip(true, username);
+
+		}
+		else if ((! userrepo.getUserData(username).isEmpty()) &&( (! userrepo.getUserPwd(username).containsValue(pwd))))
+		{
+			// send back incorrect password message
+			usermessage = "This username " + username +" already exists, the password does not match our records.</br> Please contact admin at admin@email.com to reset it";
+			userinfo.setAddtrip(false);
+			userrepo.updateAddtrip(false, username);
+			
+		}
 		else {
 			//add the user to the database
+		usermessage = "Welcome " + username +". Please add a new trip:";
 		userinfo.setUsername(username);
 		userinfo.setEmail(email);
-		userinfo.setFname(fname);
-		userinfo.setLname(lname);
-		userinfo.setUserAdded(true);
+		userinfo.setPwd(pwd);
+		userinfo.setHome(home);
+		userinfo.setAddtrip(true);
 		userrepo.save(userinfo);
 		}
 		count = 1;
 		model.addAttribute("user", userrepo.getUserData(username));	
 		model.addAttribute("trips", triprepo.getAllTrips(username));
+		model.addAttribute("usermessage", usermessage);
 		model.addAttribute("count",count);
 		return "traveltracker";
 	}
 
-	@RequestMapping(params="deptdate", method = RequestMethod.POST)
-	public String addTripData(Model model, @RequestParam Date deptdate,
-			@RequestParam Date arrdate, @RequestParam String departure,
-			@RequestParam String destination, @RequestParam String route ) {
+	@RequestMapping(params="strdeptdate", method = RequestMethod.POST)
+	public String addTripData(Model model, @RequestParam String strdeptdate,
+			@RequestParam String strexitdate, @RequestParam String departure,
+			@RequestParam String destination, @RequestParam String route ) throws ParseException {
 		Trip trip = new Trip();
 		Boolean existingtrip = false;
-		trip.setDeptdate(deptdate); // this is a date field
-		trip.setArrdate(arrdate); // this is a date field
-		trip.setDeparture(departure);
-		trip.setDestination(destination);
-		trip.setRoute(route);
-		trip.setUsername(userinfo.getUsername());
-		if (! triprepo.getDeptDate(destination, userinfo.getUsername(),deptdate).isEmpty())
+		calculateDays calcdays = new calculateDays();
+		Date deptdate =calcdays.StrToDate(strdeptdate); 
+		Date exitdate =calcdays.StrToDate(strexitdate);
+		
+		if (! triprepo.getDeptDate(destination, userinfo.getUsername(), deptdate).isEmpty())
 			// just display stored trips for this user
 		{
 			existingtrip=true;
 			model.addAttribute("existingtrip",existingtrip);}
 		else {
+			
+			trip.setDeptdate(deptdate); // this is a date field
+			trip.setExitdate(exitdate); // this is a date field
+			trip.setDeparture(departure);
+			trip.setDestination(destination);
+			trip.setRoute(route);
+			trip.setUsername(userinfo.getUsername());
+			//calculate days and store with trip data
+			
+		    trip.setDays((int) calcdays.daysBetween(calcdays.DateToCalendar(deptdate),calcdays.DateToCalendar(exitdate)));
 		triprepo.save(trip);
 		}
 		count = 2;

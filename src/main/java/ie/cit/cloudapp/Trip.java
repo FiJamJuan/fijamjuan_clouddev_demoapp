@@ -12,12 +12,13 @@ public class Trip {
 	 *
 	 */ 
 	    private Date deptdate;
-	    private Date arrdate;
+	    private Date exitdate;
 		private String departure;
 		private String destination;
 		private String route;
 		private Integer id;
 		private String username;
+		private Integer days;
 		/**
 		 * @return the deptdate
 		 */
@@ -93,16 +94,28 @@ public class Trip {
 			this.username = username;
 		}
 		/**
-		 * @return the arrdate
+		 * @return the exitdate
 		 */
-		public Date getArrdate() {
-			return arrdate;
+		public Date getExitdate() {
+			return exitdate;
 		}
 		/**
-		 * @param arrdate the arrdate to set
+		 * @param exitdate the exitdate to set
 		 */
-		public void setArrdate(Date arrdate) {
-			this.arrdate = arrdate;
+		public void setExitdate(Date exitdate) {
+			this.exitdate = exitdate;
+		}
+		/**
+		 * @return the days
+		 */
+		public Integer getDays() {
+			return days;
+		}
+		/**
+		 * @param days the days to set
+		 */
+		public void setDays(Integer days) {
+			this.days = days;
 		}
 
 

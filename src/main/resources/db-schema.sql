@@ -1,2 +1,2 @@
-create table USERDATA(id serial, username varchar(50) unique, fname varchar(50), lname varchar (50), email varchar(50), userAdded boolean default(false), addTrip boolean default(false), viewAll boolean default(false), calcDays boolean default(false), primary key (id));
-create table TRIPS(id serial, deptdate date,  arrdate date, departure varchar(50), destination varchar(50), route varchar(50), username varchar(50), primary key (id));
+create table USERDATA(id serial, username varchar(50) unique, pwd varchar(50), email varchar(50),  home varchar(50) , addtrip boolean, primary key (id));
+create table TRIPS(id serial, deptdate date,  exitdate date, departure varchar(50), destination varchar(50), route varchar(50), username varchar(50), days integer, primary key (id));
