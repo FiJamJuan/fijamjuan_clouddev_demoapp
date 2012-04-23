@@ -118,5 +118,14 @@ public class TravelController {
 		model.addAttribute("count",count);
 		return "traveltracker";
 	}
+	
+	@RequestMapping(method = RequestMethod.DELETE)
+	public void deleteTrip(Model model, @RequestParam int tripId) {
+		triprepo.delete(tripId);
+		model.addAttribute("trips", triprepo.getAllTrips(userinfo.getUsername()));
+		model.addAttribute("user", userrepo.getUserData(userinfo.getUsername()));
+		model.addAttribute("count",count);
+	}
+
 
 }
