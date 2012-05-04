@@ -14,6 +14,7 @@ import ie.cit.cloudapp.jdbcTripRepository;
 import ie.cit.cloudapp.jdbcUserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +27,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 
 @Controller
-@RequestMapping("traveltracker")
+@RequestMapping("/travel/login/main")
 public class TravelController {
 	@Autowired
 	private jdbcUserRepository userrepo;
@@ -37,12 +38,30 @@ public class TravelController {
 	public String usermessage;
 	public Integer count;
 	
-	@RequestMapping(method = RequestMethod.GET)
+	
+	@RequestMapping(value="/travel/login/main", method = RequestMethod.GET)
+	public String main(Model model) {	
+	
+		return "travel/login/main";
+	}
+ 
+
+	@RequestMapping(value = "/travel/login/main", method = RequestMethod.POST)
+	public String initialSelection(Model model, @RequestParam String select) {
+		
+	if (select == "1")
+			return "travel/login/registeruser";
+	else if (select == "2")
+		return "travel/traveltracker";
+	}
+	
+	
+	@RequestMapping(value="/travel/traveltracker", method = RequestMethod.GET)
 	public void currentUsr(Model model) {	
 		count = 0;
 		model.addAttribute("count",count);
 	}
-
+    //SecurityContextHolder.getContext().getAuthentication().getName()
 	//@RequestMapping(uri="login", method = RequestMethod.POST)
 	@RequestMapping(params = "pwd", method = RequestMethod.POST)
 	public String userData(Model model, @RequestParam String username,
@@ -81,7 +100,7 @@ public class TravelController {
 		model.addAttribute("trips", triprepo.getAllTrips(username));
 		model.addAttribute("usermessage", usermessage);
 		model.addAttribute("count",count);
-		return "traveltracker";
+		return "travel/traveltracker";
 	}
 
 	@RequestMapping(params="strdeptdate", method = RequestMethod.POST)
@@ -106,7 +125,7 @@ public class TravelController {
 			trip.setDeparture(departure);
 			trip.setDestination(destination);
 			trip.setRoute(route);
-			trip.setUsername(userinfo.getUsername());
+			trip.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
 			//calculate days and store with trip data
 			
 		    trip.setDays((int) calcdays.daysBetween(calcdays.DateToCalendar(deptdate),calcdays.DateToCalendar(exitdate)));
@@ -116,7 +135,7 @@ public class TravelController {
 		model.addAttribute("trips", triprepo.getAllTrips(userinfo.getUsername()));
 		model.addAttribute("user", userrepo.getUserData(userinfo.getUsername()));
 		model.addAttribute("count",count);
-		return "traveltracker";
+		return "travel/traveltracker";
 	}
 	
 	@RequestMapping(method = RequestMethod.DELETE)

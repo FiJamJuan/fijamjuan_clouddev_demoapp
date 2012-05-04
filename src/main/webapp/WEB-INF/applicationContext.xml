@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:security="http://www.springframework.org/schema/security"
 	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd
+		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 	
@@ -27,4 +30,22 @@
 		init-method="start" destroy-method="stop">
 		<constructor-arg value="-web, -webPort, 8082" />
 	</bean>
+	
+	<security:http auto-config="true">
+	 <security:intercept-url pattern="/travel/login/*" access="ROLE_ANONYMOUS" />
+     <security:intercept-url pattern="/travel/*" access="ROLE_USER" />
+     <security:form-login login-page='/travel/login/userlogin.jsp'/>
+    </security:http>
+    
+    <security:authentication-manager>
+    <security:authentication-provider>    
+        <security:password-encoder hash="md5" />
+        <security:jdbc-user-service data-source-ref="dataSource"/>
+    </security:authentication-provider>
+    </security:authentication-manager>
+
+
+
+
+	
 </beans>

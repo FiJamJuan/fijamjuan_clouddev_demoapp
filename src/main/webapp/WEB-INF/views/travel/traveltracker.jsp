@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -17,10 +18,10 @@
 <!--end Header-->
 </head>
 <body>
-
+    <a href="j_spring_security_logout">Logout: <security:authentication property=""principal.username"/>
+    </a>
 	<div class="Body">
 		<div class="Border">
-			
 			<c:if test="${count eq 0}">
 				<div class="login">To start please enter some user details
 					here:</div>
