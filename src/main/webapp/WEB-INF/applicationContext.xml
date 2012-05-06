@@ -32,9 +32,8 @@
 	</bean>
 	
 	<security:http auto-config="true">
-	 <security:intercept-url pattern="/travel/login/*" access="ROLE_ANONYMOUS" />
-     <security:intercept-url pattern="/travel/*" access="ROLE_USER" />
-     <security:form-login login-page='/travel/login/userlogin.jsp'/>
+	 <security:intercept-url pattern="/travel/login/*" />
+    <security:intercept-url pattern="/travel/tracker/*" access="ROLE_USER" />
     </security:http>
     
     <security:authentication-manager>

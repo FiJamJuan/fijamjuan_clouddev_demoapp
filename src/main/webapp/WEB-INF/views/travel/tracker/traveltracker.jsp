@@ -1,4 +1,3 @@
-<%@ page import="ie.cit.cloudapp.UserInfo"%>
 <%@ page import="ie.cit.cloudapp.Trip"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -7,7 +6,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="stylesheet" href="style/style.css" />
+<link rel="stylesheet" href="/style/style.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Login Page</title>
 
@@ -18,40 +17,14 @@
 <!--end Header-->
 </head>
 <body>
-    <a href="j_spring_security_logout">Logout: <security:authentication property=""principal.username"/>
+    <a href="../../j_spring_security_logout">Logout <security:authentication property="principal.username"/>
     </a>
+   
 	<div class="Body">
 		<div class="Border">
-			<c:if test="${count eq 0}">
-				<div class="login">To start please enter some user details
-					here:</div>
-				</br>
-					${count}
-					<form  method="post">
-					
-					<div class="login">Username:</div>
-					<input name="username">
-					
-					<div class="login">Password:</div>
-					<input name="pwd">
-					
-					<div class="login">Email:</div>
-					<input name="email">
-					
-					<div class="login">Home Country:</div>
-					<input name="home">
-					
-					<div class="login"></div>
-					<input value="Login" type="submit">
-				</form>
-			</c:if>
-
-
+		${user}
 			<c:forEach items="${user}" var="user" varStatus="row">
-		        	${usermessage}
-		        	
-			 <c:if test="${user.addtrip}">
-					</br>
+		    
 					<c:if test="${existingtrip}">
 				                Please check the data - the departure date and destination were the same as an existing trip.
 				                </c:if>
@@ -95,7 +68,7 @@
 								<td>${trips.departure}</td>
 								<td>${trips.deptdate}</td>
 								<td>${trips.destination}</td>
-								<td>${trips.exitdate}</td>
+								<td>${trips.Exitdate}</td>
 								<td>${trips.days}</td>
 			<td><form method="post"><input name="_method" type="hidden" value="delete"> <input
 				name="tripId" type="hidden" value="${trips.id}"> <input
@@ -105,7 +78,7 @@
 						
 						</c:forEach>
 						</table>
-			</c:if>
+	
 			</c:forEach>
 
 		</div>

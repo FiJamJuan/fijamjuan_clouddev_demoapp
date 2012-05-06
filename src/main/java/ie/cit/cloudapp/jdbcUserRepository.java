@@ -23,8 +23,12 @@ public class jdbcUserRepository {
 		
 		public void save(UserInfo userinfo){
 			jdbcTemplate.update("insert into USERDATA(username, pwd, email,home, addtrip ) values (?,?,?,?,?)",userinfo.getUsername(), userinfo.getPwd(),  userinfo.getEmail(), userinfo.getHome(), userinfo.getAddtrip());
+			jdbcTemplate.update("insert into users (username, password,enabled) values (?, ?, 'true')",userinfo.getUsername(), userinfo.getPwd());
+			jdbcTemplate.update("INSERT into authorities (username, authority) values (?,'ROLE_USER')", userinfo.getUsername());		
+
 		}
 		
+
 	
 		public List<UserInfo> getAll(){
 			return jdbcTemplate.query("select id, username, pwd, email, home, addtrip from USERDATA", new UserMapper());
