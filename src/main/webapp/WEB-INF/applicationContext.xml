@@ -33,7 +33,9 @@
 	
 	<security:http auto-config="true">
 	 <security:intercept-url pattern="/travel/login/*" />
-    <security:intercept-url pattern="/travel/tracker/*" access="ROLE_USER" />
+     <security:intercept-url pattern="/travel/tracker/*" access="ROLE_USER" />
+     <security:form-login login-page="/travel/login/login.html" authentication-failure-url="/travel/login/login.html?error=true" />
+     <security:logout/>
     </security:http>
     
     <security:authentication-manager>

@@ -63,7 +63,7 @@
 		</div>
 		<br />
 		<c:forEach items="${user}" var="user" varStatus="row">
-			<div class="normal">Hello ${user.username}! Please enter a new
+			<div class="normal">Hello ${user.username}! <br/>Please enter a new
 				Trip:</div>
 
 			<c:if test="${existingtrip}">
@@ -78,25 +78,24 @@
 					</div>
 					<!--end  Route -->
 					<div class="Out">
-						<u>Outbound Trip</u> </br>
-						<div class="trip">Departure Country:</div>
+						<u>Outbound</u> </br>
+						<div class="trip">Departure Country (From):</div>
 						<input name="departure">
 						<div class="trip">Date of Departure:</div>
 						<input name="strdeptdate"> <br />dd/mm/yyyy
 					</div>
 					<!--end  Out -->
 					<div class="Return">
-						<u>Return Trip</u> </br>
-						<div class="trip">Destination Country:</div>
+						<u>Return</u> </br>
+						<div class="trip">Destination Country (To):</div>
 						<input name="destination">
 						<div class="trip">Date of Exit:</div>
 						<input name="strexitdate"> <br />dd/mm/yyyy
-					</div>
-					<!--end  Return -->
-					<div class="AddTrip">
+						<br/>
 						<input value="Add Trip" type="submit">
-					</div>
-					<!--end  AddTrip -->
+					</div>  <!--end  Return -->
+						
+		
 				</form>
 			</div>
 			<!--end  Normal -->

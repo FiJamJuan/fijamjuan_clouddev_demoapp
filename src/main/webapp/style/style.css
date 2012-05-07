@@ -149,25 +149,15 @@ margin: 20px 10px 5px 10px;
 padding: 10px 10px 5px 10px;
 }
 div.AddTrip{
-position: relative;
-text-align: center;
-top: 180px;
-background-color: #FFFAF0;
-max-width: 900px;
-min-width: 900px;
-border-style: solid;
-border-width: 1px;
-border-color: #808080;
-margin: 20px 10px 10px 10px;
-padding: 10px 10px 10px 10px;
+
 }
 div.Out{
 position: absolute;
 background-color: #FFFAF0;
 min-width: 400px;
 max-width: 400px;
-min-height: 150px;
-max-height: 150px;
+min-height: 180px;
+max-height: 180px;
 text-align: center;
 border-style: solid;
 border-width: 1px;
@@ -183,8 +173,8 @@ margin: 20px 10px 0px 10px;
 padding: 10px 10px 10px 10px;
 min-width: 400px;
 max-width: 400px;
-min-height: 150px;
-max-height: 150px;
+min-height: 180px;
+max-height: 180px;
 text-align: center;
 border-style: solid;
 border-width: 1px;
