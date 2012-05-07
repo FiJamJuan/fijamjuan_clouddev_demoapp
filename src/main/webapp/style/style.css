@@ -39,6 +39,17 @@ font-family: 'Comic Sans MS', cursive;
 text-align: center;
 font-size: Medium;
 }
+div.normal-left{
+font-family: 'Comic Sans MS', cursive;
+color: black;
+font-size: Medium;
+}
+div.warning{
+color: red;
+font-family: 'Comic Sans MS', cursive;
+text-align: center;
+font-size: Medium;
+}
 div.login{
 font-family: 'Comic Sans MS', cursive;
 color: black;
@@ -183,8 +194,9 @@ border-color: #808080;
 }
 div.Table{
 position: absolute;
-top: 380px;
-text-align: center;
+top: 400px;
+left: 100px;
+min-width: 900px;
 margin: 20px 10px 10px 10px;
 padding: 10px 10px 50px 50px;
 }

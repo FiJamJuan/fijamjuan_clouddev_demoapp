@@ -29,12 +29,11 @@ public class jdbcTripRepository {
 
 	public List<Trip> getAllTrips(String username) {
 		return jdbcTemplate
-				.query("select id, deptdate, exitdate, departure, destination, route, username, days from TRIPS where username = ?",
+				.query("select id, deptdate, exitdate, departure, destination, route, username, days from TRIPS where username = ? order by deptdate asc",
 						new Object[] { username }, new TripMapper());
 	}
 
-	public List<Trip> getDeptDate(String destination, String username,
-			Date deptdate) {
+	public List<Trip> getDeptDate(String destination, String username,String deptdate) {
 		return jdbcTemplate
 				.query("select id, deptdate, exitdate, departure, destination, route, username, days from TRIPS where destination=? and username=? and deptdate=?",
 						new Object[] { destination, username, deptdate },
@@ -50,9 +49,9 @@ public class jdbcTripRepository {
 class TripMapper implements RowMapper<Trip> {
 	public Trip mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Trip trip = new Trip();
-		trip.setDeptdate(rs.getDate("deptdate"));
+		trip.setDeptdate(rs.getString("deptdate"));
 		trip.setDeparture(rs.getString("departure"));
-		trip.setDeptdate(rs.getDate("exitdate"));
+		trip.setDeptdate(rs.getString("exitdate"));
 		trip.setDestination(rs.getString("destination"));
 		trip.setRoute(rs.getString("route"));
 		// trip.setUserid(rs.getInt("userid"));

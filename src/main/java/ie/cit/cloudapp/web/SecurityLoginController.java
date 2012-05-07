@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/travel/login/login")
-public class SecurityLogin {
+public class SecurityLoginController {
 //controller to render login.html for username and password
 
 		

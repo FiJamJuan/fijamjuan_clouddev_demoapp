@@ -57,29 +57,34 @@ public class RegistrationController {
 			@RequestParam String pwd, @RequestParam String home,
 			@RequestParam String email) throws IOException, NoSuchAlgorithmException {
 		//add the user to the database
+		Boolean userexists=false;
 		if (! SecurityContextHolder.getContext().getAuthentication().getName().isEmpty())
 			//clear session data
 			SecurityContextHolder.getContext().setAuthentication(null);
+		//first check if existing user.
+		if (! userrepo.getUserData(username).isEmpty())
+		{
+			userexists = true;
+			model.addAttribute("userexists",userexists);
+			return ("redirect:../../travel/login/registeruser.html");
+		    
+		}
+	
+	
 		userinfo.setUsername(username);
 		userinfo.setEmail(email);
 		// create md5 hash of password
-		
 		hashPassword hpw = new hashPassword();
 		String pass = hpw.md5password(pwd);
-		
 	
-		// send back incorrect password message
-		//usermessage = "This username " + username +" already exists, the password does not match our records.</br> Please contact admin at admin@email.com to reset it";
-		//userinfo.setAddtrip(false);
-		//userrepo.updateAddtrip(false, username);
-		
 		userinfo.setPwd(pass);
 		userinfo.setHome(home);
 		userinfo.setAddtrip(true);
 		userrepo.save(userinfo);
 	    ///return to login page
+	
 	    return ("redirect:../../travel/tracker/traveltracker.html");
+	  
 
 	}
-
-	}
+}

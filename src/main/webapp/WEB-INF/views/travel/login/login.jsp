@@ -12,8 +12,9 @@
 <h1>Travel Tracker</h1>
 </div> <!--end TopBanner-->
 <div class="Register">
+<div class="warning">
+${error}<br/></div>
 <div class="normal">
-${error}<br/>
 Login with Username and Password<form name='f' action='../../j_spring_security_check' method='POST'>
  <table>
  

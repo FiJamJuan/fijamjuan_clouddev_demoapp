@@ -34,10 +34,12 @@ public class TravelController {
 	private jdbcUserRepository userrepo;
 	@Autowired
 	private jdbcTripRepository triprepo;
-
+    public String uname;
+    public UserInfo userinfo = new UserInfo();
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public void getTravelTracker(Model model) {	
+		userinfo.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
 		model.addAttribute("trips", triprepo.getAllTrips(SecurityContextHolder.getContext().getAuthentication().getName()));
 		model.addAttribute("user", userrepo.getUserData(SecurityContextHolder.getContext().getAuthentication().getName()));
 		
@@ -49,19 +51,23 @@ public class TravelController {
 			@RequestParam String destination, @RequestParam String route ) throws ParseException {
 		Trip trip = new Trip();
 		Boolean existingtrip = false;
+		Boolean dateformaterror = false;
 		calculateDays calcdays = new calculateDays();
+		
+	
 		Date deptdate =calcdays.StrToDate(strdeptdate); 
 		Date exitdate =calcdays.StrToDate(strexitdate);
 	
-		if (! triprepo.getDeptDate(destination, SecurityContextHolder.getContext().getAuthentication().getName(), deptdate).isEmpty())
+		if (! triprepo.getDeptDate(destination, userinfo.getUsername(), strdeptdate).isEmpty())
 			// just display stored trips for this user
 		{
 			existingtrip=true;
-			model.addAttribute("existingtrip",existingtrip);}
+			model.addAttribute("existingtrip",existingtrip);
+			}
 		else {
 			
-			trip.setDeptdate(deptdate); // this is a date field
-			trip.setExitdate(exitdate); // this is a date field
+			trip.setDeptdate(strdeptdate); // this is stored as a String
+			trip.setExitdate(strexitdate); // this is stored as a String
 			trip.setDeparture(departure);
 			trip.setDestination(destination);
 			trip.setRoute(route);
@@ -69,12 +75,12 @@ public class TravelController {
 			//calculate days and store with trip data
 			
 		    trip.setDays((int) calcdays.daysBetween(calcdays.DateToCalendar(deptdate),calcdays.DateToCalendar(exitdate)));
-		triprepo.save(trip);
+		    triprepo.save(trip);
 		}
-	
+
+
 		model.addAttribute("trips", triprepo.getAllTrips(SecurityContextHolder.getContext().getAuthentication().getName()));
 		model.addAttribute("user", userrepo.getUserData(SecurityContextHolder.getContext().getAuthentication().getName()));
-		
 	}
 	
 	@RequestMapping(method = RequestMethod.DELETE)

@@ -11,8 +11,8 @@ public class Trip {
 	 * @author fiona
 	 *
 	 */ 
-	    private Date deptdate;
-	    private Date exitdate;
+	    private String deptdate;
+	    private String exitdate;
 		private String departure;
 		private String destination;
 		private String route;
@@ -22,13 +22,13 @@ public class Trip {
 		/**
 		 * @return the deptdate
 		 */
-		public Date getDeptdate() {
+		public String getDeptdate() {
 			return deptdate;
 		}
 		/**
 		 * @param deptdate the deptdate to set
 		 */
-		public void setDeptdate(Date deptdate) {
+		public void setDeptdate(String deptdate) {
 			this.deptdate = deptdate;
 		}
 		/**
@@ -96,13 +96,13 @@ public class Trip {
 		/**
 		 * @return the exitdate
 		 */
-		public Date getExitdate() {
+		public String getExitdate() {
 			return exitdate;
 		}
 		/**
 		 * @param exitdate the exitdate to set
 		 */
-		public void setExitdate(Date exitdate) {
+		public void setExitdate(String exitdate) {
 			this.exitdate = exitdate;
 		}
 		/**

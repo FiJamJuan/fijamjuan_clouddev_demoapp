@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <script type="text/javascript">
@@ -74,7 +75,11 @@ return false;
 <h1>Travel Tracker</h1>
 </div> <!--end TopBanner-->
 <div class="Register">
-
+<div class="warning">
+<c:if test="${userexists}">
+  This username already exists, please select another.
+<br/> User not added. </c:if>
+</div>
 <h2>Register User</h2>
 				<div class="login">To start please enter some user details
 					here:</div>

@@ -62,12 +62,19 @@
 			<a href="../../j_spring_security_logout">Logout </a>
 		</div>
 		<br />
+		
+	
+		
 		<c:forEach items="${user}" var="user" varStatus="row">
 			<div class="normal">Hello ${user.username}! <br/>Please enter a new
 				Trip:</div>
 
 			<c:if test="${existingtrip}">
-				                Please check the data - the departure date and destination were the same as an existing trip.
+				              <div class="warning">  Please check the data - the departure date and destination were the same as an existing trip.
+				               <br/> No new data added. </div>
+				                </c:if>
+				                <c:if test="${dateformaterror}">
+				              <div class="warning">  Date format error, please enter date in format "DD/MM/YYYY"</div>
 				                </c:if>
 			</br>
 			<div class="normal">
@@ -99,9 +106,9 @@
 				</form>
 			</div>
 			<!--end  Normal -->
-
+         
 			<div class="Table">
-				<h2>Trip Data</h2>
+			  <div class="normal-left">Trip Data</div><br/>
 				<table border="1">
 					<tr>
 						<th>Route</th>
@@ -112,9 +119,7 @@
 						<th>Days at Destination</th>
 
 					</tr>
-					<c:if test="${empty trips}">
-						<br />No trips added.
-						</c:if>
+					
 
 					<c:forEach items="${trips}" var="trips" varStatus="row">
 
@@ -135,6 +140,9 @@
 
 					</c:forEach>
 				</table>
+				<c:if test="${empty trips}">
+						<br />No trips added.
+						</c:if>
 			</div>
 			<!--  end Table -->
 		</c:forEach>

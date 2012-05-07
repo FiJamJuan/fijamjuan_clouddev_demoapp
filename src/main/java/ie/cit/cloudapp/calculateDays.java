@@ -11,13 +11,14 @@ private Date enddate;
 private Date date;
 private Integer days;
 
+
 public Date StrToDate(String strDate) throws ParseException{
 
-    SimpleDateFormat sdFormat = new SimpleDateFormat("dd/mm/yyyy");  
+	
+    SimpleDateFormat sdFormat = new SimpleDateFormat("dd/mm/yyyy");   
 	Date date = sdFormat.parse(strDate); 
     return date;
 }
-
 
     public Calendar DateToCalendar(Date date){ 
 	  Calendar cal = Calendar.getInstance();
