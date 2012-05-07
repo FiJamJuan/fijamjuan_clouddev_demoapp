@@ -50,9 +50,6 @@ public class jdbcUserRepository {
 		public void updateAddtrip(Boolean addtrip, String username){
 			jdbcTemplate.update("update USERDATA set addtrip=? where username =?", addtrip, username);
 		}
-		//public Integer getId(String username){
-		//	return jdbcTemplate.queryForInt("select id from USERLOGIN where username = ?", new Object[]{username});
-		//}
 		
 		
 	}

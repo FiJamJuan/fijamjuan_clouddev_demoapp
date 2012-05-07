@@ -35,14 +35,12 @@ public class TravelController {
 	@Autowired
 	private jdbcTripRepository triprepo;
 
-	private UserInfo userinfo = new UserInfo();
-	//public String usermessage;
-
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public void getTravelTracker(Model model) {	
 		model.addAttribute("trips", triprepo.getAllTrips(SecurityContextHolder.getContext().getAuthentication().getName()));
-		model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getName());
+		model.addAttribute("user", userrepo.getUserData(SecurityContextHolder.getContext().getAuthentication().getName()));
+		
 	}
 	
 	@RequestMapping (method = RequestMethod.POST)
@@ -82,8 +80,8 @@ public class TravelController {
 	@RequestMapping(method = RequestMethod.DELETE)
 	public void deleteTrip(Model model, @RequestParam int tripId) {
 		triprepo.delete(tripId);
-		model.addAttribute("trips", triprepo.getAllTrips(userinfo.getUsername()));
-		model.addAttribute("user", userrepo.getUserData(userinfo.getUsername()));
+		model.addAttribute("trips", triprepo.getAllTrips(SecurityContextHolder.getContext().getAuthentication().getName()));
+		model.addAttribute("user", userrepo.getUserData(SecurityContextHolder.getContext().getAuthentication().getName()));
 	
 	}
 
