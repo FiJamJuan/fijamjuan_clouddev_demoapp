@@ -65,12 +65,17 @@ return false;
 </script>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Travel Tracker</title>
 </head>
+<link rel="stylesheet" href="../../style/style.css" />
 <body>
+<div class="OuterFrame">
+<div class="TopBanner">
+<h1>Travel Tracker</h1>
+</div> <!--end TopBanner-->
+<div class="Register">
 
-
-Register User
+<h2>Register User</h2>
 				<div class="login">To start please enter some user details
 					here:</div>
 				</br>
@@ -97,5 +102,7 @@ Register User
 					
 				</form>
 			    Note * indicates a required field.
+			    </div> <!--end Register-->
+</div> <!--end OuterFrame-->
 </body>
 </html>

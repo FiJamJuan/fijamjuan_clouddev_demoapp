@@ -5,12 +5,14 @@ max-width: 1000px;
 min-width: 1000px;
 }
 div.Body{
+background-color: #FFFAF0;
+position: absolute;
 max-width: 1000px;
 min-width: 1000px;
 margin-top: 0px;
-margin-right: 50px;
-margin-bottom: 20px;
-margin-left: 50px;
+margin-right: 0px;
+margin-bottom: 0px;
+margin-left: 0px;
 }
 h1{
 color: #0000CC;
@@ -25,32 +27,175 @@ font-family: 'Comic Sans MS', cursive;
 text-align: center;
 font-size: Large;
 }
+h3{
+color: #000000;
+font-family:"Times New Roman", Times, serif;
+text-align: center;
+font-size: Large;
+}
+div.normal{
+color: black;
+font-family: 'Comic Sans MS', cursive;
+text-align: center;
+font-size: Medium;
+}
 div.login{
 font-family: 'Comic Sans MS', cursive;
 color: black;
-font-size: Medium;
+font-size: Large;
 }
-div.trip{
-font-family: 'Comic Sans MS', cursive;
-color: black;
-font-size: Medium;
+div.LeftPage{
+position: absolute;
+background-color: #FFFAF0;
+min-width: 450px;
+max-width: 450px;
+min-height: 200px;
+max-height: 200px;
+text-align: center;
+border-style: solid;
+border-width: 1px;
+border-color: #808080;
+margin-right:50px;
+margin-left:20px;
+}
+div.RightPage{
+position: absolute;
+background-color: #FFFAF0;
+left: 500px;
+margin-left:20px;
+min-width: 450px;
+max-width: 450px;
+min-height: 200px;
+max-height: 200px;
+text-align: center;
+border-style: solid;
+border-width: 1px;
+border-color: #808080;
+
 }
 div.Border{
 position: absolute;
 border-style: solid;
-border-width: 2px;
-border-color: black;
+border-width: 1px;
+border-color: #808080;
 min-width: 450px;
-min-height: 400px;
+max-width: 450px;
+min-height: 250px;
+max-height: 250px;
+
 }
-div.username {
+div.DescriptionBanner
+{
+position: relative;
+top: 300px;
+text-align: center;
+margin-top:10px;
+margin-bottom:10px;
+margin-right:50px;
+margin-left:50px;
+min-width: 900px;
+max-width: 900px;
+}
+div.TopBanner
+{
+text-align: center;
+margin-top:10px;
+margin-bottom:10px;
+margin-right:50px;
+margin-left:50px;
+padding: 10px;
+min-width: 900px;
+max-width: 900px
+}
+div.Register{
+background-color: #FFFAF0;
+border-style: solid;
+border-width: 1px;
+border-color: #808080;
 position: absolute;
-right: 100px;
+text-align: center;
+max-width: 900px;
+min-width: 900px;
+margin-top:10px;
+margin-bottom:10px;
+margin-right:50px;
+margin-left:50px;
+padding: 10px;
+}
+div.OuterFrame{
+background-color: #FFFFFF;
+position: absolute;
+max-width: auto;
+min-width: 1000px;
+max-height: 550px;
+min-height: 550px;
+}
+div.InnerFrame{
+position: absolute;
+max-width: 1000px;
+min-width: 1000px;
+}
+div.Route{
+position: relative;
+text-align: center;
+top: 0px;
+background-color: #FFFAF0;
+border-style: solid;
+border-width: 1px;
+border-color: #808080;
+max-width: 900px;
+min-width: 900px;
+margin: 20px 10px 5px 10px;
+padding: 10px 10px 5px 10px;
+}
+div.AddTrip{
+position: relative;
+text-align: center;
+top: 180px;
+background-color: #FFFAF0;
+max-width: 900px;
+min-width: 900px;
+border-style: solid;
+border-width: 1px;
+border-color: #808080;
+margin: 20px 10px 10px 10px;
+padding: 10px 10px 10px 10px;
+}
+div.Out{
+position: absolute;
+background-color: #FFFAF0;
+min-width: 400px;
+max-width: 400px;
+min-height: 150px;
+max-height: 150px;
+text-align: center;
+border-style: solid;
+border-width: 1px;
+border-color: #808080;
+margin: 20px 10px 10px 10px;
+padding: 10px 10px 10px 10px;
+}
+div.Return{
+position: absolute;
+background-color: #FFFAF0;
+left: 500px;
+margin: 20px 10px 0px 10px;
+padding: 10px 10px 10px 10px;
+min-width: 400px;
+max-width: 400px;
+min-height: 150px;
+max-height: 150px;
+text-align: center;
+border-style: solid;
+border-width: 1px;
+border-color: #808080;
+
+}
+div.Table{
+position: absolute;
+top: 380px;
+text-align: center;
+margin: 20px 10px 10px 10px;
+padding: 10px 10px 50px 50px;
 }
 
-div.MainMenu {
-position: absolute;
-left: 100px;
-top: 100px;
-text-align: center;
-}
