@@ -51,13 +51,13 @@ public class TravelController {
 			@RequestParam String destination, @RequestParam String route ) throws ParseException {
 		Trip trip = new Trip();
 		Boolean existingtrip = false;
-		Boolean dateformaterror = false;
 		calculateDays calcdays = new calculateDays();
 		
 	
 		Date deptdate =calcdays.StrToDate(strdeptdate); 
 		Date exitdate =calcdays.StrToDate(strexitdate);
 	
+		
 		if (! triprepo.getDeptDate(destination, userinfo.getUsername(), strdeptdate).isEmpty())
 			// just display stored trips for this user
 		{
@@ -65,7 +65,6 @@ public class TravelController {
 			model.addAttribute("existingtrip",existingtrip);
 			}
 		else {
-			
 			trip.setDeptdate(strdeptdate); // this is stored as a String
 			trip.setExitdate(strexitdate); // this is stored as a String
 			trip.setDeparture(departure);
@@ -75,9 +74,9 @@ public class TravelController {
 			//calculate days and store with trip data
 			
 		    trip.setDays((int) calcdays.daysBetween(calcdays.DateToCalendar(deptdate),calcdays.DateToCalendar(exitdate)));
+		
 		    triprepo.save(trip);
 		}
-
 
 		model.addAttribute("trips", triprepo.getAllTrips(SecurityContextHolder.getContext().getAuthentication().getName()));
 		model.addAttribute("user", userrepo.getUserData(SecurityContextHolder.getContext().getAuthentication().getName()));

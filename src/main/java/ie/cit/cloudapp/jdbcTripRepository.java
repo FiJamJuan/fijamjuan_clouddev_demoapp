@@ -29,7 +29,7 @@ public class jdbcTripRepository {
 
 	public List<Trip> getAllTrips(String username) {
 		return jdbcTemplate
-				.query("select id, deptdate, exitdate, departure, destination, route, username, days from TRIPS where username = ? order by deptdate asc",
+				.query("select id, deptdate, exitdate, departure, destination, route, username, days from TRIPS where username = ? order by id asc",
 						new Object[] { username }, new TripMapper());
 	}
 
@@ -51,7 +51,7 @@ class TripMapper implements RowMapper<Trip> {
 		Trip trip = new Trip();
 		trip.setDeptdate(rs.getString("deptdate"));
 		trip.setDeparture(rs.getString("departure"));
-		trip.setDeptdate(rs.getString("exitdate"));
+		trip.setExitdate(rs.getString("exitdate"));
 		trip.setDestination(rs.getString("destination"));
 		trip.setRoute(rs.getString("route"));
 		// trip.setUserid(rs.getInt("userid"));

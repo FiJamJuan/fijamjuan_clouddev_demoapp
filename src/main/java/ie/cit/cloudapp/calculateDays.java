@@ -15,7 +15,7 @@ private Integer days;
 public Date StrToDate(String strDate) throws ParseException{
 
 	
-    SimpleDateFormat sdFormat = new SimpleDateFormat("dd/mm/yyyy");   
+    SimpleDateFormat sdFormat = new SimpleDateFormat("dd/MM/yyyy");   
 	Date date = sdFormat.parse(strDate); 
     return date;
 }

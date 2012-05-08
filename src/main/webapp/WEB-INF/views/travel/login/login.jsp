@@ -22,7 +22,9 @@ Login with Username and Password<form name='f' action='../../j_spring_security_c
     <tr><td>Password:</td><td><input type='password' name='j_password'/></td></tr>
     <tr><td colspan='2'><input name="submit" type="submit" value="login"/></td></tr>
   </table>
+  
 </form>			 
+
 </div>   <!--end Normal-->
 </div> <!--end Register-->
 </div> <!--end OuterFrame-->

@@ -42,6 +42,36 @@
 			alert("Please enter an Exit Date, dd/mm/yyyy.");
 			return false;
 		}
+		
+		var dayslash=e.indexOf("/");
+		var monthslash=e.lastIndexOf("/");
+		
+		if (isNaN(c.substr(0,2)) || isNaN(c.substr(3,2)) || isNaN(c.substr(6,4)))
+	      {
+		  alert("Not a valid departure date, should be in numeric dd/mm/yyyy format");
+		  return false;
+		  }
+		
+		if (dayslash!=2 || monthslash!=5 || e.length!=10 )
+		  {
+		  alert("Not a valid departure date, should be in dd/mm/yyyy format");
+		  return false;
+		  }
+		
+		var depdayslash=c.indexOf("/");
+		var depmonthslash=c.lastIndexOf("/");
+
+		if (isNaN(c.substr(0,2)) || isNaN(c.substr(3,2)) || isNaN(c.substr(6,4)))
+	      {
+		  alert("Not a valid exit date, should be in numeric dd/mm/yyyy format");
+		  return false;
+		  }
+		
+		if (depdayslash!=2 || depmonthslash!=5 || c.length!=10 )
+		  {
+		  alert("Not a valid exit date, should be in dd/mm/yyyy format");
+		  return false;
+		  }
 	}
 //-->
 </script>
@@ -62,8 +92,6 @@
 			<a href="../../j_spring_security_logout">Logout </a>
 		</div>
 		<br />
-		
-	
 		
 		<c:forEach items="${user}" var="user" varStatus="row">
 			<div class="normal">Hello ${user.username}! <br/>Please enter a new
@@ -106,9 +134,8 @@
 				</form>
 			</div>
 			<!--end  Normal -->
-         
+         <br/>
 			<div class="Table">
-			  <div class="normal-left">Trip Data</div><br/>
 				<table border="1">
 					<tr>
 						<th>Route</th>
